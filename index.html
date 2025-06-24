@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Declaração para Você ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+    }
+
+    /* Partículas flutuantes de fundo */
+    .floating-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      color: rgba(255, 182, 193, 0.6);
+      font-size: 20px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+      color: #880e4f;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    .title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3em;
+      font-weight: 700;
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeInTitle 2s ease-in-out forwards;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    @keyframes fadeInTitle {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .line {
+      border-right: 2px solid #880e4f;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 1.3em;
+      width: 0;
+      animation-fill-mode: forwards;
+      margin-bottom: 0.8em;
+      animation-timing-function: steps(40, end);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .line1 { animation: typing 0.9s steps(9) forwards, blink 0.75s step-end infinite alternate; animation-delay: 2s; }
+    .line2 { animation: typing 2.4s steps(24) forwards, blink 0.75s step-end infinite alternate; animation-delay: 3.5s; }
+    .line3 { animation: typing 3.3s steps(33) forwards, blink 0.75s step-end infinite alternate; animation-delay: 6.5s; }
+    .line4 { animation: typing 2.9s steps(29) forwards, blink 0.75s step-end infinite alternate; animation-delay: 10.2s; }
+    .line5 { animation: typing 3.5s steps(35) forwards, blink 0.75s step-end infinite alternate; animation-delay: 13.7s; }
+    .line6 { animation: typing 3.2s steps(32) forwards, blink 0.75s step-end infinite alternate; animation-delay: 17.5s; }
+    .line7 { animation: typing 3.2s steps(32) forwards, blink 0.75s step-end infinite alternate; animation-delay: 21.5s; }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .heart {
+      position: absolute;
+      color: #e91e63;
+      font-size: 50px;
+      pointer-events: none;
+      animation: fall linear forwards;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-150px) scale(1.1) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(var(--fall-distance)) scale(1) rotate(360deg);
+        opacity: 1;
+      }
+    }
+
+    .second-page {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #fff3f8 0%, #fce4ec 50%, #f8bbd9 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 2;
+      transition: top 2s ease-in-out;
+      padding: 20px;
+    }
+
+    .second-page.show {
+      top: 0;
+    }
+
+    .final-message {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5em;
+      font-weight: 700;
+      color: #ad1457;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .sub-message {
+      font-size: 1.2em;
+      color: #880e4f;
+      max-width: 600px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeInUp 1s ease-in-out 1s forwards;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .restart-btn {
+      background: linear-gradient(45deg, #e91e63, #ad1457);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+      opacity: 0;
+      animation: fadeInUp 1s ease-in-out 2s forwards;
+    }
+
+    .restart-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .container {
+        width: 95%;
+        padding: 15px;
+      }
+      
+      .title {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+      }
+      
+      .line {
+        font-size: 1.1em;
+        margin-bottom: 0.6em;
+      }
+      
+      .final-message {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+      
+      .sub-message {
+        font-size: 1em;
+        margin-bottom: 30px;
+      }
+      
+      .restart-btn {
+        padding: 12px 25px;
+        font-size: 1em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title {
+        font-size: 1.8em;
+      }
+      
+      .line {
+        font-size: 1em;
+      }
+      
+      .final-message {
+        font-size: 2em;
+      }
+      
+      .heart {
+        font-size: 35px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Partículas flutuantes de fundo -->
+  <div class="floating-particles" id="particles"></div>
+
+  <div class="container">
+    <div class="title">Para Você, Meu Amor</div>
+    <div class="line line1">Meu amor,</div>
+    <div class="line line2">a cada dia que passa,</div>
+    <div class="line line3">meu coração só sabe bater por você.</div>
+    <div class="line line4">Sua presença ilumina minha vida,</div>
+    <div class="line line5">e me dá forças para seguir.</div>
+    <div class="line line6">Você é a razão do meu sorriso,</div>
+    <div class="line line7">e da minha felicidade eterna. 💖</div>
+  </div>
+
+  <div class="second-page" id="secondPage">
+    <div class="final-message">Você é tudo para mim... ❤️</div>
+    <div class="sub-message">
+      Cada momento ao seu lado é um presente. Você trouxe cor à minha vida e significado aos meus dias. 
+      Obrigado(a) por ser quem você é e por me permitir amar você de forma tão profunda e verdadeira.
+    </div>
+    <button class="restart-btn" onclick="restartAnimation()">Ver Novamente ✨</button>
+    <a href="gallery.html" class="restart-btn" style="margin-top: 20px;">Ver Nossas Fotos 📸</a>
+  </div>
+
+  <script>
+    // Criar partículas flutuantes de fundo
+    function createFloatingParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const symbols = ['💕', '💖', '💗', '💘', '💝', '🌹', '✨', '💫'];
+      
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+        
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Animação de corações caindo
+    const hearts = [];
+    const stackHeights = [];
+    const heartSize = 50;
+    const maxHearts = 300;
+
+    function startHeartRain() {
+      const heartInterval = setInterval(() => {
+        if (hearts.length >= maxHearts || Math.max(...stackHeights, 0) * heartSize >= window.innerHeight) {
+          clearInterval(heartInterval);
+          setTimeout(() => {
+            document.getElementById('secondPage').classList.add('show');
+          }, 1500);
+          return;
+        }
+
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        
+        const heartSymbols = ['❤️', '💖', '💕', '💗', '💘'];
+        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+        const left = Math.floor(Math.random() * window.innerWidth);
+        heart.style.left = `${left}px`;
+
+        const col = Math.floor(left / heartSize);
+        if (!stackHeights[col]) stackHeights[col] = 0;
+
+        const bottom = window.innerHeight - stackHeights[col] * heartSize - heartSize;
+        heart.style.setProperty('--fall-distance', `${bottom}px`);
+
+        stackHeights[col] += 1;
+
+        const randomSize = Math.floor(Math.random() * 15 + 40); // 40–55px
+        heart.style.fontSize = `${randomSize}px`;
+        heart.style.animationDuration = (Math.random() * 0.5 + 1.2) + 's';
+
+        document.body.appendChild(heart);
+        hearts.push(heart);
+      }, 60);
+    }
+
+    // Função para reiniciar a animação
+    function restartAnimation() {
+      // Limpar corações existentes
+      hearts.forEach(heart => heart.remove());
+      hearts.length = 0;
+      stackHeights.length = 0;
+      
+      // Esconder segunda página
+      document.getElementById('secondPage').classList.remove('show');
+      
+      // Reiniciar animações das linhas
+      const lines = document.querySelectorAll('.line');
+      lines.forEach(line => {
+        line.style.animation = 'none';
+        line.offsetHeight; // Trigger reflow
+        line.style.animation = null;
+      });
+      
+      // Reiniciar título
+      const title = document.querySelector('.title');
+      title.style.animation = 'none';
+      title.offsetHeight; // Trigger reflow
+      title.style.animation = null;
+      
+      // Reiniciar chuva de corações
+      setTimeout(() => {
+        startHeartRain();
+      }, 25500);
+    }
+
+    // Inicializar quando a página carregar
+    window.addEventListener('load', () => {
+      createFloatingParticles();
+      setTimeout(() => {
+        startHeartRain();
+      }, 25500); // começa após o texto ser digitado
+    });
+  </script>
+</body>
+</html>
+

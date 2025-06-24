@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nossas Memórias ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
+      font-family: 'Poppins', sans-serif;
+      color: #880e4f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .gallery-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5em;
+      font-weight: 700;
+      color: #ad1457;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .gallery-item {
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .gallery-item p {
+      font-size: 1.1em;
+      font-weight: 600;
+      margin: 0;
+      text-align: center;
+      color: #ad1457;
+    }
+
+    .back-button {
+      margin-top: 40px;
+      background: linear-gradient(45deg, #e91e63, #ad1457);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .back-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .gallery-title {
+        font-size: 2.5em;
+        margin-bottom: 30px;
+      }
+      .gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      .gallery-item img {
+        height: 180px;
+      }
+      .gallery-item p {
+        font-size: 1em;
+      }
+      .back-button {
+        padding: 12px 25px;
+        font-size: 1em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-title {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+      .gallery-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .gallery-item img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="gallery-title">Nossas Memórias Juntos ✨</h1>
+  <div class="gallery-container" id="galleryContainer">
+    <!-- As fotos serão inseridas aqui pelo JavaScript -->
+  </div>
+  <a href="index.html" class="back-button">Voltar para a Declaração</a>
+
+  <script>
+    const photos = [
+      { src: 'images/IMG_6675_1.jpeg', caption: 'Nossa primeira foto, um marco do nosso amor que significa o mundo para mim.' },
+      { src: 'images/IMG_7123.jpeg', caption: 'Nossas mãos unidas' },
+      { src: 'images/IMG_6934.jpeg', caption: 'Nosso amor em um espelho' },
+    ];
+
+    const galleryContainer = document.getElementById("galleryContainer");
+
+    photos.forEach(photo => {
+      const galleryItem = document.createElement("div");
+      galleryItem.classList.add("gallery-item");
+      galleryItem.innerHTML = `
+        <img src="${photo.src}" alt="${photo.caption}">
+        <p>${photo.caption}</p>
+      `;
+      galleryContainer.appendChild(galleryItem);
+    });
+  </script>
+</body>
+</html>
+
