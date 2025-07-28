@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SegredoSecreto</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: url('./111 (1).png') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 400px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 30px;
+      color: #fff;
+      box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 30px 4px;
+    }
+
+    .container h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .container p {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    .input-box {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-box input {
+      width: 100%;
+      height: 45px;
+      background-color: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 40px;
+      padding: 0 45px 0 20px;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .input-box input::placeholder {
+      color: #fff;
+    }
+
+    .input-box i {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .remember-forgot a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .remember-forgot a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      width: 100%;
+      height: 40px;
+      background-color: #4caf50;
+      border: none;
+      border-radius: 40px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Tela de carregamento */
+    #vinheta {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      color: #fff;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .barra {
+      width: 300px;
+      height: 20px;
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .progresso {
+      height: 100%;
+      background: linear-gradient(to right, #00ff88, #00ffff);
+      width: 0%;
+      animation: preencher 3s forwards;
+    }
+
+    @keyframes preencher {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+
+    .bateria {
+      position: relative;
+      width: 100px;
+      height: 50px;
+      border: 4px solid #00ff88;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .bateria-topo {
+      position: absolute;
+      top: 15px;
+      right: -12px;
+      width: 8px;
+      height: 20px;
+      background-color: #00ff88;
+      border-radius: 2px;
+    }
+
+    .bateria-nivel {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #00ff88, #00ffff);
+      animation: carregando 3s infinite;
+    }
+
+    @keyframes carregando {
+      0% { width: 0%; }
+      50% { width: 100%; }
+      100% { width: 0%; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <form onsubmit="validarLogin(event)">
+      <h1>For Marina</h1>
+      <p>Entre com seu usuário e senha</p>
+
+      <div class="input-box">
+        <input type="text" id="usuario" placeholder="Usuário" required>
+        <i class="bx bxs-user"></i>
+      </div>
+
+      <div class="input-box">
+        <input type="password" id="senha" placeholder="Senha" required>
+        <i class="bx bxs-lock-alt"></i>
+      </div>
+
+      <div class="remember-forgot">
+        <label><input type="checkbox"> Lembrar</label>
+        <a href="redefinicao.html">Esqueci a senha</a>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+  </main>
+
+  <!-- Vinheta de Transição -->
+  <div id="vinheta">
+    <h2>Carregando sua surpresa... 💕</h2>
+    <div class="barra"><div class="progresso"></div></div>
+
+    <!-- Ícone da bateria -->
+    <div class="bateria">
+      <div class="bateria-nivel"></div>
+      <div class="bateria-topo"></div>
+    </div>
+  </div>
+
+  <script>
+    function validarLogin(event) {
+      event.preventDefault();
+
+      const usuarioCorreto = "Marina";
+      const senhaCorreta = "290325";
+
+      const usuario = document.getElementById("usuario").value;
+      const senha = document.getElementById("senha").value;
+
+      if (usuario === usuarioCorreto && senha === senhaCorreta) {
+        document.querySelector(".container").style.display = "none";
+        document.getElementById("vinheta").style.display = "flex";
+
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 3500); // tempo de exibição da vinheta
+      } else {
+        alert("❌ Usuário ou senha incorretos.");
+      }
+    }
+  </script>
+</body>
+</html>
